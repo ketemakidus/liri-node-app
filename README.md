@@ -1,5 +1,5 @@
 # liri-node-app
-liri-node-app
+liri-node-app I have include some gify on the asset folder 
 # # Technologies i Used:
                     * Node.js
                     * Javascript
