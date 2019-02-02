@@ -12,15 +12,15 @@ var request = require('request');
 
 var spotify = new Spotify(keys.spotify);
 
-// var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
+var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
 
-// bandsintown
+bandsintown
 
-//   .getArtistEventList("")
+  .getArtistEventList("")
 
-//   .then(function (events) {
-//   });
-// console.log(bandsintown);
+  .then(function (events) {
+  });
+console.log(bandsintown);
 
 
 var getresultspotify = function (songName) {
@@ -107,15 +107,15 @@ runme(process.argv[2], process.argv[3]
 );
 
 
-  // fs.readFile("random.txt", "utf8", function (err, data) {
-  //   if (err) {
-  //     return
-  //     console.log(data);
-  //   }
+  fs.readFile("random.txt", "utf8", function (err, data) {
+    if (err) {
+      return
+      console.log(data);
+    }
 
-  //   userInput = dataArr[0];
-  //   userQuery = dataArr[1];
+    userInput = dataArr[0];
+    userQuery = dataArr[1];
 
-  //   userCommand(userInput, userQuery)
+    userCommand(userInput, userQuery)
 
-  // });
+  });
