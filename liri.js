@@ -12,6 +12,17 @@ var request = require('request');
 
 var spotify = new Spotify(keys.spotify);
 
+// var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
+
+// bandsintown
+
+//   .getArtistEventList("")
+
+//   .then(function (events) {
+//   });
+// console.log(bandsintown);
+
+
 var getresultspotify = function (songName) {
 
   if (songName === undefined) {
@@ -66,7 +77,14 @@ var getresultmovie = function (movieName) {
     console.log('statusCode:', response && response.statusCode);
     console.log('body:', body);
     console.log(JSON.stringify(movieName, null, 2));
-
+    console.log("Title: " + JSON.stringify(movieName));
+    			console.log("Year: " + JSON.stringify(Year).Year);
+    			console.log("IMDB Rating: " + JSON.stringify(movieName));
+    			console.log(" " + movieName);
+    			console.log("Country: " + JSON.stringify(movieName).Country);
+    			console.log("Language: " + JSON.stringify(movieName));
+    			console.log("Plot: " + JSON.stringify(movieName).Plot);
+    			console.log("Actors: " + JSON.stringify(movieName).Actors);	
   });
 
 }
@@ -88,18 +106,16 @@ runme(process.argv[2], process.argv[3]
 
 );
 
-function dowhatitsays() {
 
-  fs.readFile("random.txt", "utf8", function (error, data) {
-    if (error) {
-      return
-      console.log(error);
-    }
+  // fs.readFile("random.txt", "utf8", function (err, data) {
+  //   if (err) {
+  //     return
+  //     console.log(data);
+  //   }
 
-    userInput = dataArr[0];
-    userQuery = dataArr[1];
+  //   userInput = dataArr[0];
+  //   userQuery = dataArr[1];
 
-    userCommand(userInput, userQuery)
+  //   userCommand(userInput, userQuery)
 
-  });
-};
+  // });
