@@ -12,15 +12,15 @@ var request = require('request');
 
 var spotify = new Spotify(keys.spotify);
 
-var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
+// var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
 
-bandsintown
+// bandsintown
 
-  .getArtistEventList("")
+//   .getArtistEventList("")
 
-  .then(function (events) {
-  });
-console.log(bandsintown);
+//   .then(function (events) {
+//   });
+// console.log(bandsintown);
 
 
 var getresultspotify = function (songName) {
@@ -30,12 +30,9 @@ var getresultspotify = function (songName) {
     console.log(songName);
 
     songName = "thriller";
-    
+
     return (songName);
   }
-
-
-
 
   spotify.search({ type: 'track', query: songName }, function (err, data) {
     if (err) {
@@ -73,18 +70,19 @@ runme(process.argv[2], process.argv[3]
 var getresultmovie = function (movieName) {
 
   request("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
+
+  console.log('statusCode:', response && response.statusCode);
     console.log('error:', error);
-    console.log('statusCode:', response && response.statusCode);
-    console.log('body:', body);
-    console.log(JSON.stringify(movieName, null, 2));
-    console.log("Title: " + JSON.stringify(movieName));
-    			console.log("Year: " + JSON.stringify(Year).Year);
-    			console.log("IMDB Rating: " + JSON.stringify(movieName));
-    			console.log(" " + movieName);
-    			console.log("Country: " + JSON.stringify(movieName).Country);
-    			console.log("Language: " + JSON.stringify(movieName));
-    			console.log("Plot: " + JSON.stringify(movieName).Plot);
-    			console.log("Actors: " + JSON.stringify(movieName).Actors);	
+
+    var jsondata = JSON.parse(body);
+
+            console.log("Title:" + jsondata.Title);
+     			  console.log("Year: " + jsondata.Year);
+    		   	console.log("Rated: " +jsondata.Rated);
+    		  	console.log("Country: " + jsondata.Country);
+    			console.log("Language: " + jsondata.Language);
+    			console.log("Plot: " + jsondata.Plot);
+    			console.log("Actors: " + jsondata.Actors);	
   });
 
 }
@@ -107,15 +105,15 @@ runme(process.argv[2], process.argv[3]
 );
 
 
-  fs.readFile("random.txt", "utf8", function (err, data) {
-    if (err) {
-      return
-      console.log(data);
-    }
+  // fs.readFile("random.txt", "utf8", function (err, data) {
+  //   if (err) {
+  //     return
+  //     console.log(data);
+  //   }
 
-    userInput = dataArr[0];
-    userQuery = dataArr[1];
+  //   userInput = dataArr[0];
+  //   userQuery = dataArr[1];
 
-    userCommand(userInput, userQuery)
+  //   userCommand(userInput, userQuery)
 
-  });
+  // });
