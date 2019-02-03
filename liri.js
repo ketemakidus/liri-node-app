@@ -12,17 +12,6 @@ var request = require('request');
 
 var spotify = new Spotify(keys.spotify);
 
-// var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
-
-// bandsintown
-
-//   .getArtistEventList("")
-
-//   .then(function (events) {
-//   });
-// console.log(bandsintown);
-
-
 var getresultspotify = function (songName) {
 
   if (songName === undefined) {
@@ -71,18 +60,18 @@ var getresultmovie = function (movieName) {
 
   request("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
 
-  console.log('statusCode:', response && response.statusCode);
+    console.log('statusCode:', response && response.statusCode);
     console.log('error:', error);
 
     var jsondata = JSON.parse(body);
 
-            console.log("Title:" + jsondata.Title);
-     			  console.log("Year: " + jsondata.Year);
-    		   	console.log("Rated: " +jsondata.Rated);
-    		  	console.log("Country: " + jsondata.Country);
-    			console.log("Language: " + jsondata.Language);
-    			console.log("Plot: " + jsondata.Plot);
-    			console.log("Actors: " + jsondata.Actors);	
+    console.log("Title:" + jsondata.Title);
+    console.log("Year: " + jsondata.Year);
+    console.log("Rated: " + jsondata.Rated);
+    console.log("Country: " + jsondata.Country);
+    console.log("Language: " + jsondata.Language);
+    console.log("Plot: " + jsondata.Plot);
+    console.log("Actors: " + jsondata.Actors);
   });
 
 }
@@ -104,16 +93,45 @@ runme(process.argv[2], process.argv[3]
 
 );
 
+var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
 
-  // fs.readFile("random.txt", "utf8", function (err, data) {
-  //   if (err) {
-  //     return
-  //     console.log(data);
-  //   }
+bandsintown
 
-  //   userInput = dataArr[0];
-  //   userQuery = dataArr[1];
+  .getArtistEventList("")
 
-  //   userCommand(userInput, userQuery)
+  .then(function (events) {
+  });
+// console.log(bandsintown);
 
-  // });
+var choose = function (caseinfo, functionData) {
+
+    switch (caseinfo) {
+      case "do-this":
+      bandsintown(functionData);
+        break;
+      default: console.log("unknown");
+    }
+  };
+  
+  var runme = function (arr1, arr2) {
+  
+    choose(arr1, arr2);
+  };
+  runme(process.argv[2], process.argv[3]
+  
+  );
+  
+
+function dothis(){
+
+  fs.readFile("random.txt", "utf8", function (error, data) {
+    if (error) {
+      return console.log(error);}
+      let dataArr = dtaa.split("")
+    userInput = dataArr[0];
+    userQuery = dataArr[1];
+
+    userCommand(userInput, userQuery)
+
+  });
+}
