@@ -93,45 +93,54 @@ runme(process.argv[2], process.argv[3]
 
 );
 
-var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
+// var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
 
-bandsintown
+// bandsintown
 
-  .getArtistEventList("")
+//   .getArtistEventList("")
 
-  .then(function (events) {
-  });
-// console.log(bandsintown);
+//   .then(function (events) {
+//   });
+// // console.log(bandsintown);
 
-var choose = function (caseinfo, functionData) {
+// var choose = function (caseinfo, functionData) {
 
-    switch (caseinfo) {
-      case "do-this":
-      bandsintown(functionData);
-        break;
-      default: console.log("unknown");
-    }
-  };
+//     switch (caseinfo) {
+//       case "do-this":
+//       bandsintown(functionData);
+//         break;
+//       default: console.log("unknown");
+//     }
+//   };
   
-  var runme = function (arr1, arr2) {
+//   var runme = function (arr1, arr2) {
   
-    choose(arr1, arr2);
-  };
-  runme(process.argv[2], process.argv[3]
+//     choose(arr1, arr2);
+//   };
+//   runme(process.argv[2], process.argv[3]
   
-  );
+//   );
   
-
-function dothis(){
-
+    var dothis = function (){
   fs.readFile("random.txt", "utf8", function (error, data) {
-    if (error) {
-      return console.log(error);}
-      let dataArr = dtaa.split("")
-    userInput = dataArr[0];
-    userQuery = dataArr[1];
-
-    userCommand(userInput, userQuery)
-
+    if (error) 
+      throw error;
+      
+      var dataArr = data.split(",")
+      if (dataArr.length == 2 ){
+        pick (dataArr[0],dataArr[1]);
+      } else if (dataArr.length == 1){
+        pick(dataArr[0]);
+      }
   });
-}
+    }
+    var pick = function (caseinfo, functionData) {
+
+      switch (caseinfo) {
+        case "do-this":
+          dothis(functionData);
+          break;
+        default: console.log("unknown");
+      }
+    };
+
