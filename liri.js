@@ -12,14 +12,27 @@ var request = require('request');
 
 var spotify = new Spotify(keys.spotify);
 
+var choose = function (caseinfo, functionData) {
+
+  switch (caseinfo) {
+    case "spotify-this-song":
+      getresultspotify(functionData);
+      break;
+    case "movie-this":
+      getresultmovie(functionData);
+      break;
+    case "do-this":
+      bandsintown(functionData);
+      break;
+    case "read-file":
+      readFile(functionData);
+      break;
+    default: console.log("unknown");
+  }
+};
 var getresultspotify = function (songName) {
 
   if (songName === undefined) {
-
-    console.log(songName);
-
-    songName = "thriller";
-
     return (songName);
   }
 
@@ -31,31 +44,10 @@ var getresultspotify = function (songName) {
     console.log(data.tracks.items[0].artists);
 
   });
+  console.log(songName);
 
+  songName = "thriller";
 }
-
-var choose = function (caseinfo, functionData) {
-
-  switch (caseinfo) {
-    case "spotify-this-song":
-      getresultspotify(functionData);
-      break;
-    default: console.log("unknown");
-  }
-};
-
-
-
-var runme = function (arr1, arr2) {
-
-  choose(arr1, arr2);
-};
-runme(process.argv[2], process.argv[3]
-
-);
-
-
-
 var getresultmovie = function (movieName) {
 
   request("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
@@ -75,15 +67,6 @@ var getresultmovie = function (movieName) {
   });
 
 }
-var choose = function (caseinfo, functionData) {
-
-  switch (caseinfo) {
-    case "movie-this":
-      getresultmovie(functionData);
-      break;
-    default: console.log("unknown");
-  }
-};
 
 var runme = function (arr1, arr2) {
 
@@ -93,7 +76,18 @@ runme(process.argv[2], process.argv[3]
 
 );
 
-var bandsintown = require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
+
+var runme = function (arr1, arr2) {
+
+  choose(arr1, arr2);
+};
+runme(process.argv[2], process.argv[3]
+
+);
+
+var bandsintown = function (bandname) {
+
+require('bandsintown')("https://rest.bandsintown.com/artists/?app_id=codingbootcamp");
 
 bandsintown
 
@@ -101,46 +95,25 @@ bandsintown
 
   .then(function (events) {
   });
-// console.log(bandsintown);
+}
 
-var choose = function (caseinfo, functionData) {
 
-    switch (caseinfo) {
-      case "do-this":
-      bandsintown(functionData);
-        break;
-      default: console.log("unknown");
-    }
-  };
-  
-  var runme = function (arr1, arr2) {
-  
-    choose(arr1, arr2);
-  };
-  runme(process.argv[2], process.argv[3]
-  
-  );
-  
-    var dothis = function (){
+var readFile= function () {
   fs.readFile("random.txt", "utf8", function (error, data) {
-    if (error) 
+    if (error)
       throw error;
-      
-      var dataArr = data.split(",")
-      if (dataArr.length == 2 ){
-        pick (dataArr[0],dataArr[1]);
-      } else if (dataArr.length == 1){
-        pick(dataArr[0]);
-      }
-  });
-    }
-    var pick = function (caseinfo, functionData) {
 
-      switch (caseinfo) {
-        case "do-this":
-          dothis(functionData);
-          break;
-        default: console.log("unknown");
-      }
-    };
+    var dataArr = data.split(",")
+    if (dataArr.length == 2) {
+
+
+      pick(dataArr[0], dataArr[1]);
+    } else if (dataArr.length == 1) {
+      pick(dataArr[0]);
+    }
+  });
+  console.log(readFile);
+}
+readFile();
+
 
